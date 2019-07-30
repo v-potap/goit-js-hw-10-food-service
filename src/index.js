@@ -1,5 +1,5 @@
 import './styles.css';
-import Handlebars from 'handlebars/dist/handlebars';
+import menuTemplate from './templates/menu-item.hbs';
 
 const menuItems = module.require('./menu.json');
 
@@ -25,8 +25,8 @@ window.addEventListener('beforeunload', handleUnload);
 applySettings(currentSettings, domRefs);
 
 menuItems.forEach(element => {
-  const template = Handlebars.compile(domRefs.menuTemplate.innerHTML.trim());
-  const markup = template(element); // html разметка с подставленным значениями
+  // const template = Handlebars.compile(domRefs.menuTemplate.innerHTML.trim());
+  const markup = menuTemplate(element); // html разметка с подставленным значениями
   domRefs.menu.insertAdjacentHTML('afterBegin', markup);
 });
 
